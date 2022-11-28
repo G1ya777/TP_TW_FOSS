@@ -1,0 +1,117 @@
+[
+    {
+        "flowerId":1,
+        "flower" : "bouquet 01",
+        "price" : "500 DA",
+        "img" : "http://localhost:5000/assets/img01.jpg"
+    },
+    {
+        "flowerId":2,
+        "flower" : "bouquet 02",
+        "price" : "750 DA",
+        "img" : "http://localhost:5000/assets/img02.jpg"
+    },
+    {
+        "flowerId":3,
+        "flower" : "bouquet 03",
+        "price" : "1500 DA",
+        "img" : "http://localhost:5000/assets/img03.jpg"
+    },
+    {
+        "flowerId":4,
+        "flower" : "bouquet 04",
+        "price" : "3000 DA",
+        "img" : "http://localhost:5000/assets/img04.jpg"
+    },
+    {
+        "flowerId":5,
+        "flower" : "bouquet 05",
+        "price" : "950 DA",
+        "img" : "http://localhost:5000/assets/img05.jpg"
+    },
+    {
+        "flowerId":6,
+        "flower" : "bouquet 06",
+        "price" : "1200 DA",
+        "img" : "http://localhost:5000/assets/img06.jpg"
+    },
+    {
+        "flowerId":7,
+        "flower" : "bouquet 07",
+        "price" : "3600 DA",
+        "img" : "http://localhost:5000/assets/img07.jpg"
+    },
+    {
+        "flowerId":8,
+        "flower" : "bouquet 08",
+        "price" : "1750 DA",
+        "img" : "http://localhost:5000/assets/img08.jpg"
+    }
+    ,
+    {
+        "flowerId":9,
+        "flower" : "bouquet 09",
+        "price" : "550 DA",
+        "img" : "http://localhost:5000/assets/img09.jpg"
+    },
+    {
+        "flowerId":10,
+        "flower" : "bouquet 10",
+        "price" : "830 DA",
+        "img" : "http://localhost:5000/assets/img10.jpg"
+    },
+    {
+        "flowerId":11,
+        "flower" : "bouquet 11",
+        "price" : "1550 DA",
+        "img" : "http://localhost:5000/assets/img11.jpg"
+    },
+    {
+        "flowerId":12,
+        "flower" : "bouquet 12",
+        "price" : "3200 DA",
+        "img" : "http://localhost:5000/assets/img12.jpg"
+    },
+    {
+        "flowerId":13,
+        "flower" : "bouquet 13",
+        "price" : "1950 DA",
+        "img" : "http://localhost:5000/assets/img13.jpg"
+    },
+    {
+        "flowerId":14,
+        "flower" : "bouquet 14",
+        "price" : "1230 DA",
+        "img" : "http://localhost:5000/assets/img14.jpg"
+    },
+    {
+        "flowerId":15,
+        "flower" : "bouquet 15",
+        "price" : "2800 DA",
+        "img" : "http://localhost:5000/assets/img15.jpg"
+    },
+    {
+        "flowerId":16,
+        "flower" : "bouquet 16",
+        "price" : "380 DA",
+        "img" : "http://localhost:5000/assets/img16.jpg"
+    },
+    {
+        "flowerId":17,
+        "flower" : "bouquet 17",
+        "price" : "460 DA",
+        "img" : "http://localhost:5000/assets/img17.jpg"
+    },
+    {
+        "flowerId":18,
+        "flower" : "bouquet 18",
+        "price" : "1350 DA",
+        "img" : "http://localhost:5000/assets/img18.jpg"
+    },
+    {
+        "flowerId":19,
+        "flower" : "bouquet 19",
+        "price" : "2100 DA",
+        "img" : "http://localhost:5000/assets/img19.jpg"
+    }
+]

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Sample Site</title>
+  <link href="../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+  <!-- <link  href="../node_modules/bootstrap/dist/js/bootstrap.js" >
+  <link  href="../node_modules/jquery/dist/jquery.js"> -->
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous"> -->
+  <style>
+  </style>
+</head>
+
+
+<body>
+
+  <script type="text/javascript" src="../node_modules/jquery/dist/jquery.js"></script>
+  <script type="text/javascript" src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+
+  <div class="d-flex justify-content-center bg-light w-25 mx-auto" style="margin-top:250px">
+    <form class="justify-self-center">
+      <div class="d-flex flex-column ">
+
+
+        <div class="d-flex flex-row">
+          <label class="mr-5 mt-5">email</label>
+          <input type="email" class="mb-5 mt-5"> </input>
+        </div>
+        <div class="d-flex flex-row">
+          <label class="mr-3">password</label>
+          <input type="password" id="inputPassword"> </input>
+        </div>
+        <div class="d-flex flex-row align-items-start">
+          <div class="row-sm-3 mt-3" style="margin-left:85px">
+            <input type="checkbox" class="" onchange="myFunction()"> </input>
+            <label class="mg-auto radio-inline mr-2 text-sm-left font-weight-light">show password</label>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg align-self-center mt-5 mb-3">submit</button>
+
+
+
+
+
+
+
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function myFunction() {
+      console.log('ok')
+      var x = document.getElementById("inputPassword");
+      if (x.getAttribute('type') === "password")
+        x.setAttribute('type', 'text')
+      else
+        x.setAttribute('type', 'password')
+
+    }
+  </script>
+
+
+
+</body>
+
+</html>
