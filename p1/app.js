@@ -86,27 +86,66 @@ const authenticateToken = (req, res, next) => {
   const authHeader = req.headers.cookie
   const token = authHeader && authHeader.split('j%3A%7B%22token%22%3A%22')[1].split('%22%2C%22')[0]
 
-  if (token == null) return res.sendStatus(401)
+  if (token == null) return res.send("guest")
 
   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
     if (err) return res.sendStatus(403)
     req.user = user
     next()
   })
+}
+
+const findCart = async (req) => {
+
+  var cartArray
+  if (req) cartArray = req.map(Number);
+  var cart;
+  if (cartArray) {
+    cart = await FlowerArray.find({ 'flowerId': { $in: cartArray } });
+    return cart;
+  }
 
 }
+
+router.get('/cart', authenticateToken, async (req, res) => {
+
+  var cart;
+  cart = await findCart(req.query.cart)
+  console.log(cart)
+  if(cart) res.send(cart)
+  else res.send("flower array sent empty")
+
+
+
+
+
+})
+
+router.post('/sendCart', authenticateToken, async (req, res) => {
+  var indexes = [];
+
+    for (let i = 0; i < req.body.length; i++) {
+        if (req.body[i]) indexes.push(i + 1)
+
+    }
+  var cart;
+  cart = await findCart(indexes)
+  console.log(cart)
+
+})
+
 router.get('/getNumberOfFlowers', authenticateToken, async (req, res) => {
 
   const numberOfFlowers = await FlowerArray.find().count()
-  res.send({value : numberOfFlowers})
+  res.json({ value: numberOfFlowers })
 
 })
 router.get('/flower', authenticateToken, async (req, res) => {
   const page = req.query.page
   const flowerArray = await FlowerArray.find()
     .where('flowerId').gt((page - 1) * 8).lt(page * 8 + 1)
-    if(flowerArray.length == 0) res.sendStatus(404)
-    else res.json(flowerArray)
+  if (flowerArray.length == 0) res.sendStatus(404)
+  else res.json(flowerArray)
 })
 
 router.get('/userName', authenticateToken, (req, res) => {
@@ -118,6 +157,7 @@ router.get('/userName', authenticateToken, (req, res) => {
 
 router.delete('/logout', (req, res) => {
   res.clearCookie("connection");
+  res.clearCookie("cart");
   res.end()
 })
 

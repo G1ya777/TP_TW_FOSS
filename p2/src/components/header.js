@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom";
-import { getUserName } from './login';
+import { getUserName } from '../control/getters';
 import axios from "axios";
+import { getFlowerArray } from "../control/getters";
 
 export var logButton;
 
@@ -17,11 +18,18 @@ const getUser = async () => {
 
 }
 
+
+
 function Header() {
 
     const navigate = useNavigate();
     const [user, setUser] = useState();
+
     getUser().then(value => setUser(value))
+
+    useEffect(() => {
+        getUser().then(value => setUser(value))
+      }, []);
 
     const [state, setState] = useState(logButton)
 
@@ -68,9 +76,11 @@ function Header() {
 
     }
 
-    const goToCart = () => {
+    const goToCart = async () => {
 
-        navigate('/cart')
+        const res = await getFlowerArray();
+
+        navigate('/cart', { state: { flowerArray: res } })
 
     }
 
@@ -138,7 +148,7 @@ function Header() {
                 <div className="dropdown d-flex justify-content-end ml-4 mr-4">
                     <label className="label mt-4">{user}</label>
                     <button className="btn" onClick={goToCart}>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-cart3" viewBox="0 0 16 16">
                             <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
                         </svg>
                     </button>

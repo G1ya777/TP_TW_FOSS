@@ -3,7 +3,6 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-
 } from 'react-router-dom';
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import "./styles/style.scss"
@@ -47,7 +46,7 @@ function App() {
             path="/cart"
             element={
               <ProtectedRoute >
-                <Cart/>
+                <div><Header /> <Cart/></div>
               </ProtectedRoute>
             } />
           <Route
