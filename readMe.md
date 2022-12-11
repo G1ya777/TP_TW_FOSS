@@ -4,6 +4,7 @@
 
 # HOW TO USE
 
+* load the appended db.json file into the collection userdb.flowers
 * open a console
 * cd into p1 folder
 * run  `npm i` to install node modules
