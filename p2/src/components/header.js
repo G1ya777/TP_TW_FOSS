@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom";
 import { getUserName } from '../control/getters';
 import axios from "axios";
+import { getFlowerArrayForCart } from "../control/getters";
 import { getFlowerArray } from "../control/getters";
-
 export var logButton;
 
 
@@ -25,11 +25,10 @@ function Header() {
     const navigate = useNavigate();
     const [user, setUser] = useState();
 
-    getUser().then(value => setUser(value))
 
     useEffect(() => {
-        getUser().then(value => setUser(value))
-      }, []);
+        if (typeof (user) === 'undefined') getUser().then(value => setUser(value))
+    }, []);
 
     const [state, setState] = useState(logButton)
 
@@ -78,7 +77,7 @@ function Header() {
 
     const goToCart = async () => {
 
-        const res = await getFlowerArray();
+        const res = await getFlowerArrayForCart();
 
         navigate('/cart', { state: { flowerArray: res } })
 
@@ -92,24 +91,7 @@ function Header() {
 
     const goToProducts = async () => {
 
-        if (user !== 'guest') {
-
-            try {
-                const res = await axios.get('/flower', {
-                    params: {
-                        page: 1
-                    }
-                })
-                navigate('/products', { state: { flowerArray: res.data } })
-
-            }
-            catch (e) {
-                console.log(e)
-            }
-
-
-        }
-        else navigate('/products')
+        navigate(`/products/1`)
 
     }
 

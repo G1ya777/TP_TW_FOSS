@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const router = express.Router();
 const app = express();
+const cors = require('cors')
 const mongoose = require("mongoose");
 const bcrypt = require('bcrypt');
 const asyncErrors = 'express-async-errors';
@@ -10,7 +11,10 @@ require('dotenv').config()
 const jwt = require('jsonwebtoken');
 
 app.use(express.json());
-
+app.use(cors({
+  origin: 'http://localhost:3000',
+  credentials: true,
+}));
 
 const UserSchema = new mongoose.Schema(
   {
@@ -191,9 +195,9 @@ router.post('/login', async (req, res) => {
     // else res.json({userName : user.userName , email : user.email})
 
     else {
-      //   const randomString = require('crypto').randomBytes(64).toString('hex');
+
       token = jwt.sign({ userName: user.userName }, process.env.ACCESS_TOKEN_SECRET)
-      // res.cookie('connection', {token : token , userName : user.userName}).send()
+
       res.cookie('connection', { token: token, userName: user.userName }, {
         // secure: true,
         httpOnly: true,

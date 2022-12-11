@@ -36,7 +36,7 @@ function App() {
           <Route path='/' element={<div><Header/>< Home /><Footer /></div>}></Route>
           <Route exact path='/home' element={<div><Header name={"test"} isLoggedInProp={false} />< Home /><Footer /></div>}></Route>
           <Route
-            path="/products"
+            path="/products/:id"
             element={
               <ProtectedRoute >
                 <div><Header />< Products/></div>

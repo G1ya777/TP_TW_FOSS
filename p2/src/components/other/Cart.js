@@ -1,6 +1,6 @@
 import Flower from "./Flower";
 import Cookies from 'universal-cookie';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 
@@ -15,7 +15,6 @@ function Cart() {
 
 
     const [flowerArray, setFlowerArray] = useState(location.state.flowerArray)
-
 
     const emptyCart = () => {
         cookies.remove('cart', { path: '/' });

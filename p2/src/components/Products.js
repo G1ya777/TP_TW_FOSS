@@ -1,57 +1,54 @@
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Flower from './other/Flower';
 import Footer from './footer'
 import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { getNumberOfFlowers } from '../control/getters'
+import { getNumberOfFlowers, getFlowerArray } from '../control/getters'
+
+var loaded = false;
 
 function Products() {
 
-
-
-    const location = useLocation();
     const navigate = useNavigate();
+    const { id } = useParams();
 
-    const [numberOfFlowers,setNumberOfFlowers] = useState(0);
-
+    const [numberOfFlowers, setNumberOfFlowers] = useState(0);
+    const [flowerArray, setFlowerArray] = useState([]);
 
     useEffect(() => {
-        getNumberOfFlowers().then(value => setNumberOfFlowers(value))
-    }, []);
+        getNumberOfFlowers().then(value => {
+            setNumberOfFlowers(value)
+            getFlowerArray(id, value.value).then(value => setFlowerArray(value))
+            setPage(id)
+        })
+        loaded = true
+
+    }, [id]);
 
 
 
 
-    var flowerArray = location.state.flowerArray;
-
-    const [page, setPage] = useState(1);
 
 
+
+    const [page, setPage] = useState(id);
 
     const pageSetFunction = async (event) => {
 
         var Page = event.currentTarget.id;
-
         if ((parseInt(Page) > 0 && Page <= numberOfFlowers.value) || Page === 'last') {
             if (Page === 'last')
 
                 Page = numberOfFlowers.value
             setPage(Page)
-            try {
-                const res = await axios.get('/flower', {
-                    params: {
-                        page: Page
-                    }
-                })
-                navigate('/products', { state: { flowerArray: res.data } })
-            }
-            catch (e) {
-                console.log(e)
-            }
+            getFlowerArray(Page, numberOfFlowers.value).then(value => setFlowerArray(value))
+            navigate(`/products/${Page}`)
         }
     }
 
-    return (
+
+
+
+    if (loaded && flowerArray != 404) return (
 
         <div className="">
             <h1 className='text-center mt-5 text'>Our Products</h1>
@@ -109,6 +106,13 @@ function Products() {
             <Footer />
         </div>
     )
+
+    else if (!loaded) return (
+        <div className="spinner-border" role="status">
+        <span className="sr-only">Loading...</span>
+      </div>)
+    else if (flowerArray == 404) navigate('/404')
+
 }
 
 export default Products;
