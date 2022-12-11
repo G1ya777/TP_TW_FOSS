@@ -4,9 +4,9 @@
 
 # HOW TO USE
 
+* open a console
 * load the appended db.json file into the collection userdb.flowers by
 running `mongoimport --jsonArray --db userdb --collection flowers --file db.json`
-* open a console
 * cd into p1 folder
 * run  `npm i` to install node modules
 * run `npx nodemon app.js` to start the express server
